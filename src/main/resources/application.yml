@@ -1,0 +1,14 @@
+spring:
+  config:
+    import: aws-secretsmanager:/secrets/database-secrets?prefix=secrets. # DOT IS INTENTIONAL!
+
+  cloud:
+    aws:
+      credentials:
+        profile:
+          name: iam
+
+  datasource:
+    url: ${secrets.spring.datasource.url}
+    username: ${secrets.spring.datasource.username}
+    password: ${secrets.spring.datasource.password}
