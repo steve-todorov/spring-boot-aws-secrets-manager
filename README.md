@@ -3,8 +3,14 @@
 ### Create a secret:
 
 ```bash
-aws secretsmanager create-secret --name /secrets/database-secrets --secret-string '{"spring.datasource.url":"jdbc:h2:file:./h2.db","spring.datasource.username":"root","spring.datasource.password":"password"}'
+$ aws secretsmanager create-secret --name /secrets/database-secrets --secret-string '{"spring.datasource.url":"jdbc:h2:file:./h2.db","spring.datasource.username":"root","spring.datasource.password":"password"}'
+$ aws secretsmanager get-secret-value --secret-id /secrets/database-secrets --query SecretString --output json
+"{\"spring.datasource.url\":\"jdbc:h2:file:./h2.db\",\"spring.datasource.username\":\"root\",\"spring.datasource.password\":\"password\"}"
 ```
+
+* Note: Depending on the Jackson version you might or might not have issues with `\n` in the string. If you find 
+that the example isn't working, then it is most likely because of this or something else that Jackson doesn't like about
+the string.
 
 ### Have the following environment variables 
 
