@@ -1,12 +1,17 @@
+logging:
+  level:
+    io.awspring.cloud: TRACE
+
 spring:
   config:
     import: aws-secretsmanager:/secrets/database-secrets?prefix=secrets. # DOT IS INTENTIONAL!
 
-  cloud:
-    aws:
-      credentials:
-        profile:
-          name: iam
+# Useful during local development -- if you use `aws sso` or have an existing AWS profile in your ~/.aws/config
+#  cloud:
+#    aws:
+#      credentials:
+#        profile:
+#          name: iam
 
   datasource:
     url: ${secrets.spring.datasource.url}

@@ -3,9 +3,7 @@
 ### Create a secret:
 
 ```bash
-aws secretsmanager create-secret \ 
---name /secrets/database-secrets \ 
---secret-string "{\n    \"spring.datasource.url\": \"jdbc:h2:file:./h2.db\",\n    \"spring.datasource.username\": \"root\",\n    \"spring.datasource.password\": \"password\"\n}"
+aws secretsmanager create-secret --name /secrets/database-secrets --secret-string '{"spring.datasource.url":"jdbc:h2:file:./h2.db","spring.datasource.username":"root","spring.datasource.password":"password"}'
 ```
 
 ### Have the following environment variables 
